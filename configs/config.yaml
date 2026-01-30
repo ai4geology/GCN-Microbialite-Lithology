@@ -1,0 +1,33 @@
+# Configuration for GCN Microbialite Lithology Identification
+
+exp_name: "dengying4_gcn"
+
+# 数据路径
+data_path: "data/processed/dengying4_well_logs.csv"
+
+# 测井曲线列名 (对应论文中的8种曲线)
+log_columns: ['AC', 'CAL', 'CNL', 'DEN', 'GR', 'PE', 'RLLD', 'RLLS']
+num_logs: 8
+
+# 岩性类别数 (SSTR, THRO, WSTR, SILIS, MICR)
+num_classes: 5
+
+# 序列长度 (对应论文中的窗口大小，原始序列长度10，采样窗口3-5)
+seq_len: 10
+window_size: 3
+
+# 模型参数
+hidden_dim: 64
+num_gcn_layers: 2
+dropout: 0.3
+
+# 训练参数
+epochs: 1200
+lr: 0.0005  # 5e-4 对应论文
+batch_size: 32
+
+# 数据增强
+use_smote: true  # 使用SMOTE处理类别不平衡
+
+# 标签名称 (用于可视化)
+class_names: ['SSTR', 'THRO', 'WSTR', 'SILIS', 'MICR']
